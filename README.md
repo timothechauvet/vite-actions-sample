@@ -1,4 +1,4 @@
-# Smiley wiki - a Svelte sample website
+# Smiley wiki - a Svelte sample website 😎
 
 Sample website about a collection of smileys
 
