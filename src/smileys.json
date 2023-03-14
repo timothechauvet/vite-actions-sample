@@ -1,0 +1,54 @@
+[
+	{
+		"id": 1,
+		"image":
+			"https://cdn.w600.comps.canstockphoto.com/sunglasses-cool-emoji-emoticon-clipart-vector_csp31846758.jpg",
+		"title": "Smiley Aviateur",
+		"rarity": "⭐⭐",
+		"description": "Peut être trouvé facilement sur Canstockphoto.com",
+		"edit": false
+	},
+	{
+		"id": 2,
+		"image": "https://cdn.w600.comps.canstockphoto.com/snowman-vector-clip-art_csp3376041.jpg",
+		"title": "Smiley Bonhomme de Neige",
+		"rarity": "⭐",
+		"description": "Ne survit pas après avril",
+		"edit": false
+	},
+	{
+		"id": 3,
+		"image":
+			"https://cdn.w600.comps.canstockphoto.com/eye-popping-emoticon-vector-clip-art_csp40206711.jpg",
+		"title": "Smiley Observateur",
+		"rarity": "⭐⭐⭐⭐",
+		"description": "Qu'a-t-il bien pu voir ?",
+		"edit": false
+	},
+	{
+		"id": 4,
+		"image": "https://cdn.w600.comps.canstockphoto.com/nerd-emoticon-clipart-vector_csp6101685.jpg",
+		"title": "Smiley Intello",
+		"rarity": "⭐⭐",
+		"description": "Il me fait penser à Bob l'Éponge",
+		"edit": false
+	},
+	{
+		"id": 5,
+		"image":
+			"https://cdn.w600.comps.canstockphoto.com/smiley-emoticon-with-ok-sign-eps-vector_csp13765388.jpg",
+		"title": "Smiley 👌",
+		"rarity": "⭐",
+		"description": "Il essaye de me piéger pour que je regarde dedans",
+		"edit": false
+	},
+	{
+		"id": 6,
+		"image":
+			"https://cdn.w600.comps.canstockphoto.com/smiley-face-dog-stock-photograph_csp5748199.jpg",
+		"title": "Smiley mangé",
+		"rarity": "⭐",
+		"description": "Dévoré par un molosse",
+		"edit": false
+	}
+]
