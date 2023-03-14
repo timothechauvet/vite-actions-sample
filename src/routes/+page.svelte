@@ -59,6 +59,7 @@
             <h4 style="max-width: 200px; text-align: center;">{smiley.rarity}</h4>
             <p style="max-width: 200px; text-align: center">{smiley.description}</p>
             <button on:click={() => setEditing(i, true)}>Modifier</button>
+		<aubin />
             
             {/if}
         </article>
