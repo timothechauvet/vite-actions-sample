@@ -11,7 +11,6 @@
   }
 </script>
 
-<p>Aubin Functionnality</p>
 <button on:click={increment}>
   Clicked {count}
   {count === 1 ? 'time' : 'times'}
