@@ -5,6 +5,7 @@
 <script>
 	import { each } from "svelte/internal";
     import jsonWikiList from '../smileys.json';
+	import aubin from ../aubin.svelte;
     let wikiList = jsonWikiList;
 
     let inTitle = '';
