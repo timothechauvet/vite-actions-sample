@@ -1,5 +1,11 @@
 <script>
   let count = 0;
+  
+  $: if (count >= 10) {
+		alert('count is dangerously high!');
+		count = 0;
+	}
+  
   function increment () {
     count+=1;
   }
