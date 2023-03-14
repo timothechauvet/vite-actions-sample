@@ -1,1 +1,54 @@
 name: Deploy app on Azure
+on:
+  #push:
+  #  branches:
+  #    - aubinaso
+   workflow_dispatch:
+   
+strategy:
+  matrix:
+    node_version: ['18']
+    os: [ubuntu-latest, windows-latest, macOS-latest]
+    exclude:
+      - operation-system: [windows-latest, macOS-latest]
+   
+jobs:
+ build:
+    runs-on: ${{ matrix.os }}
+    environment: Stage
+    env:
+      AZURE_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      AZURE_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      AZURE_WEBAPP_NAME: aubinasowebapp
+    steps:
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+      - name: Cloning Repo
+        uses: actions/checkout@v3
+        with:
+          submodules: recursive
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          cache-dependency-path: '~/npm'
+          node_version: ${{ matrix.node_version }}
+      - name: Install Dependencies
+        run: npm install
+      - name: Login
+        uses: azure/login@v1
+        with:
+          client-id: ${{ env.AZURE_CLIENT_ID }}
+          tenant-id: ${{ env.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      - name: Run Azure WebApp
+        uses: azure/webapps-deploy@2
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+      - name: logout
+        run: |
+           az logout
+   
