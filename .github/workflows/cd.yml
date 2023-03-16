@@ -23,7 +23,7 @@ jobs:
       - name: Build
         run: npm run build --if-present
       - name: Run Azure WebApp
-        uses: azure/webapps-deploy@2
+        uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ env.APP_NAME }}
           creds: ${{ env.AZURE_CREDENTIALS }}
