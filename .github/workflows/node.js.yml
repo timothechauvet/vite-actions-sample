@@ -30,9 +30,9 @@ jobs:
 
     - name: Zips the build artifacts 📦
       run: |
-        mkdir build
-        cp -r node_modules build package.json package-lock.json build/
-        zip -r build.zip build
+        mkdir output
+        cp -r node_modules build package.json package-lock.json output/
+        zip -r build.zip output
 
     - name: Saves build artifacts 💾
       uses: actions/upload-artifact@v3
@@ -60,4 +60,4 @@ jobs:
       with:
         app-name: ${{ env.AZURE_WEBAPP_NAME }}
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-        package: './build'
+        package: './output'
