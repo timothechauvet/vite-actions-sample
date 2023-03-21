@@ -4,6 +4,9 @@ on:
   push:
     branches: [ "main" ]
 
+env:
+  AZURE_WEBAPP_NAME: wa-wiki-smiley
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,21 +21,43 @@ jobs:
         node-version: 18 
 
     - name: Installs dependencies ⬇️
-      run: npm ci
+      run: |
+        npm prune --production
+        npm ci
 
     - name: Builds the Svelte app ⚒️
       run: npm run build --if-present
 
-    - name: Save build artifacts 💾
+    - name: Zips the build artifacts 📦
+      run: |
+        mkdir build
+        cp -r node_modules build package.json package-lock.json build/
+        zip -r build.zip build
+
+    - name: Saves build artifacts 💾
       uses: actions/upload-artifact@v3
       with:
-        name: dist
-        path: build
+        name: build
+        path: build.zip
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checks out repo's code 📥
-      uses: actions/checkout@v3
+    - name: Downloads build artifacts 📥
+      uses: actions/download-artifact@v3
+      with:
+        name: build
+    
+    - name: Unzips the build artifacts 📦
+      run: |
+        unzip build.zip 
+        rm build.zip
+
+    - name: Deploys to Azure Web App 🌐
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: ${{ env.AZURE_WEBAPP_NAME }}
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: './build'
